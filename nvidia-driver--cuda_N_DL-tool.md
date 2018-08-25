@@ -105,7 +105,16 @@ source activate tensorflow
 conda install tensorflow-gpu
 conda upgrade tensorflow-gpu
 ```
-4. to stop the environment, using the following command
+
+4. to test whether the Tensorflow has been isntalled correctly, using following python statements:
+```python
+from tensorflow.python.client import device_lib
+
+device_lib.list_local_devices()
+```
+If everything goes well, your CPU and GPU info will be printed.
+
+5. to stop the environment, using the following command
 ```bash
 source deactivate tensorflow
 ```
@@ -114,4 +123,19 @@ source deactivate tensorflow
 To install pytorch, the steps is identical to install the tensorflow, just use following conda command to install:
 ```bash
 conda install pytorch torchvision -c pytorch
+```
+
+To test the correctness of installation, using the following python scrpts:
+```python
+import torch
+torch.cuda.is_available()
+# Will print True 
+
+import torch
+torch.cuda.get_device_name(0)
+# Will print 'GeForce xxxxxxx'
+
+import torch
+torch.cuda.device_count()
+# will print the number of GPUs
 ```
