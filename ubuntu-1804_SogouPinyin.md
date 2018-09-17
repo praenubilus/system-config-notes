@@ -17,7 +17,6 @@ sudo  apt-get remove indicator-keyboard
 ```bash
 sudo apt install fcitx-table-wbpy fcitx-config-gtk
 ```
-切换为 Fcitx输入法
 5. switch default input method to fcitx
 ```bash
 im-config -n fcitx
