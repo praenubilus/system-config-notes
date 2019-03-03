@@ -66,7 +66,16 @@ Then source the bash or restart.
 
 TODO
 
+### Install Docker Community Edition
+
+https://docs.docker.com/install/
+
+### Install Nvidia Docker
+
+https://github.com/NVIDIA/nvidia-docker
+
 ## Using PyTorch and Tensorflow/Keras from Docker
+
 In this section, we will cover how to use Docker Images from Tensorflow and PyTorch to build machine learning environments.
 
 TODO
