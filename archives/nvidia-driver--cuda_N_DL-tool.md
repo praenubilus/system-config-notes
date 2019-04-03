@@ -1,4 +1,10 @@
-# Install and configure Deep Learning Env for Ubuntu 18.04 LTS (Bionic Beaver)
+# (Deprecated) Install and configure Deep Learning Env for Ubuntu 18.04 LTS (Bionic Beaver)
+
+## update notes
+
+This doc has already been deprecated. Refer to the latest one using apt and docker to configure and build the environment.
+
+## old contents starts here
 
 The Cuda and NV driver do not suppor 18.04 officially at this time(late August 2018), and the X11 frontend has been changed from Unity in 16.04 to GNOME. Also, the latest tensorflow(1.9) does not support CUDA 9.1 and 9.2 well. Here are some basic steps to make both tensorflow and pytorch work on 18.04.
 
