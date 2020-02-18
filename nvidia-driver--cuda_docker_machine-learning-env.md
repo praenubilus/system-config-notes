@@ -2,7 +2,7 @@
 
 ## Before Start
 
-This doc requires Ubuntu 18.04 LTS (Bionic Beaver), GPU supports driver 410+ (recommend 1080Ti and up) Docker and Nvidia Docker.
+This doc requires Ubuntu 18.04 LTS (Bionic Beaver), GPU supports driver 410+ Docker and Nvidia Docker.
 
 ### Check current NVidia Driver Version
 
@@ -50,7 +50,7 @@ And expect that happens frequently after every kernel update (annoying), the dri
 
 ## Install CUDA Toolkit
 
-TODO
+Follow all the commmands and isntructions from [NVidia Official repository](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1804).
 
 ### CUDA post install configuration
 
@@ -64,11 +64,17 @@ Then source the bash or restart.
 
 ## Install Docker and NVidia-docker
 
-TODO
-
 ### Install Docker Community Edition
 
 https://docs.docker.com/install/
+
+#### post installation configuration
+
+To use Docker as a non-root user, adding username to the **docker** group with following command:
+
+```bash
+sudo usermod -aG docker <your-user-name>
+```
 
 ### Install Nvidia Docker
 
