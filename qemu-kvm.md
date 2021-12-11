@@ -52,6 +52,7 @@ By default, A virtual NAT NIC is attached when a VM is created. Network printer 
 3. modify video section in windows VM config file
 
    ```bash
+   # for ubuntu 18.04, for later versions(20.04+) xml can be edited in virt manager GUI
    virsh edit <Windows-VM-Name>
    ```
 
