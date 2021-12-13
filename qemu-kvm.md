@@ -44,7 +44,9 @@ sudo apt install qemu qemu-kvm libvirt-clients libvirt-daemon-system bridge-util
 
 By default, A virtual NAT NIC is attached when a VM is created. Network printer on host network is not visible. The solution is to add another bridge(using host physical NIC) to the VM. Then the printer will be visible. This can be done directly in the Virt-Manager.
 
-## make qemu work for any resolution on Windows guest
+## Windows Guest
+
+### make qemu work for any resolution on Windows guest
 
 1. install [spice guest tools](https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe)
 2. enable auto resize in `Virt-Manager`:  
@@ -62,6 +64,27 @@ By default, A virtual NAT NIC is attached when a VM is created. Network printer 
       <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0'/>
     </video>
    ```
+
+### Windows 11 installation
+
+Windows 11 guest requires extra steps. And to make it work, `Ubuntu 20.04+` is recommended. The key point is to simulate TPM 2.0 on the host OS and configure it for the windows 11 guests.
+
+- Install software TPM
+  - Find appropriate swtpm version ppa and install dependencies. Here we use `Ubuntu 20.04 focal`.
+  - 
+    ```sh
+    sudo add-apt-repository ppa:stefanberger/swtpm-focal
+    sudo apt update
+    sudo apt install -y swtpm swtpm-tools
+    ```
+  - When creating and configuring Windows 11 guest, in `virt-manager`
+    - select Chipset as `Q35`, Firmware as `OVMF_CODE.secboot.fd`. If you cannot see the option, you may have not selected windows as OS type.
+  
+    ![qemu windows settings](images/qemu-win11-overview-settings.png)
+
+  - `Add Hardware`->`TPM`(version 2.0). If you are using Ubuntu `18.04 bionic`, the version option is not visible. You have to edit the raw XML.
+
+    ![qemu tpm settings](images/qemu-win11-tpm-settings.png)
 
 ## Linux Host and Windows Guest File Sharing(Shared Folder)
 
