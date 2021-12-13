@@ -24,6 +24,21 @@ Chocolatey tool
   ssh -v -Y <username>@<ipaddress> -p <port>
   ```
 
+## Windows cannot Run Script in Powershell
+
+```ps1
+# check execution policy
+ Get-ExecutionPolicy --List
+# change policy for current user
+ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+# change policy for local machine(most users and scripts)
+ Set-ExecutionPolicy RemoteSigned -Scope LocalMachine
+```
+
+## Set startup application in Windows
+
+`Win+R`-> `shell:startup`-> right click then create a shortcut
+
 ## Misc System and Productivity Apps
 
 - AutoHotKey

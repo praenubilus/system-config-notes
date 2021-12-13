@@ -24,11 +24,13 @@ sudo apt --fix-broken install
 
 More details can refer the [official wiki](https://github.com/autokey/autokey/wiki/Installing#installation-options).
 
-After installation, using the existing backup key configs: 
+After installation, using the existing backup key configs:
+
 - clone the data from repository
 - create an empty folder or phrase/script in the autokey GUI. This step is important, or the application will not recognize the backup data folder. 
 - delete the data folder under ~/.config/autokey
 - Create a symbolic link to the backup **data** folder under home folder:
+  
     ```bash
     ln -s ~/Workspace/personal-template/keyboard-mapping/autokey/data data
     ```
@@ -52,3 +54,12 @@ The autokey has a most important missing feature is: it cannot capture mouse cli
 - create a symbolink under home folder and link it to the config file: `ln ~/Workspace/personal-template/keyboard-mapping/xbindkeys/.xbindkeysrc ~/.xbindkeysrc`
 - stop all existing xbindkey service: `killall -s1 xbindkeys`
 - restart the service: `xbindkeys -f ~/.xbindkeysrc`
+
+## Display Settings
+
+- Solid color background (dark slate gray)
+
+    ```bash
+    gsettings set org.gnome.desktop.background picture-uri ""
+    gsettings set org.gnome.desktop.background primary-color '#2F4F4F'    
+    ```
