@@ -39,6 +39,12 @@ Chocolatey tool
 
 `Win+R`-> `shell:startup`-> right click then create a shortcut
 
+## Install WSL
+
+```ps1
+wsl --install 
+```
+
 ## Misc System and Productivity Apps
 
 - AutoHotKey
