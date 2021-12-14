@@ -63,6 +63,11 @@ Chocolatey tool
   
   ```ps1
   choco install oh-my-posh
+  # after installation, we need to modify the profile file
+  code $PROFILE
+  # append 
+  # Invoke-Expression (oh-my-posh --init --shell pwsh --config $env:LocalAppData/Programs/oh-my-posh/themes/pure.omp.json) 
+  # to the end of the file
   ```
 
 - poshgit
