@@ -45,6 +45,28 @@ Chocolatey tool
 wsl --install 
 ```
 
+## Add autocompletion in Powershell
+
+```ps1
+# Create profile when not exist
+if (!(Test-Path -Path $PROFILE.CurrentUserAllHosts)) {
+  New-Item -ItemType File -Path $PROFILE.CurrentUserAllHosts -Force
+}
+
+# Open the profile with an editor (e.g. good old Notepad)
+ii $PROFILE.CurrentUserAllHosts
+```
+
+```ps1
+# Shows navigable menu of all options when hitting Tab
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+
+# Autocompletion for arrow keys
+Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+```
+
+
 ## Misc System and Productivity Apps
 
 - AutoHotKey
