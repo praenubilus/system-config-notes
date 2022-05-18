@@ -2,6 +2,17 @@
 
 ## Sogou Pinyin
 
+### Notes for Ubuntu 22.04
+
+- Follow the official website for installation
+- after installation debian package, set the `/etc/environment` to solve compatibility issue. See [this thread](https://askubuntu.com/questions/1406597/how-to-get-sogou-pinyin-ime-work-properly-in-ubuntu-22-04).
+  
+  ```bash
+    GTK_IM_MODULE=fcitx
+    QT_IM_MODULE=fcitx
+    XMODIFIERS="@im=fcitx"
+  ```
+
 1. Uninstall ibus
 
     ```bash
