@@ -6,7 +6,21 @@
 sudo apt install qemu qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager libguestfs-tools
 ```
 
-## migrate from VirtualBox Image to Qemu/kvm
+## Migration and Tranfer VMs
+
+### export qemu VM
+
+  ```bash
+    virsh dumpxml vm-name > /path/to/xm_file.xml
+  ```
+
+### import libvirt VM XML file as new VM
+
+  ```bash
+   virsh define /path/to/xmlfile.xml
+  ```
+
+### migrate from VirtualBox Image to Qemu/kvm
 
 - convert to raw images
 
