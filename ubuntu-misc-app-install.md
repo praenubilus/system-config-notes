@@ -63,3 +63,77 @@ The autokey has a most important missing feature is: it cannot capture mouse cli
     gsettings set org.gnome.desktop.background picture-uri ""
     gsettings set org.gnome.desktop.background primary-color '#2F4F4F'    
     ```
+
+## Terminal Settings
+
+### configure oh-my-zsh
+
+```bash
+  sudo apt install zsh
+  sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+```
+
+### set zsh themes
+
+- download resource
+
+  ```bash
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  ```
+
+- Set `ZSH_THEME="powerlevel10k/powerlevel10k"` in `~/.zshrc`
+
+### zsh plugins
+
+- zsh-syntax-highlighting
+
+  ```bash
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  ```
+
+  - add the plugin to `~/.zshrc`
+  
+    ```bash
+        plugins=([plugins...] zsh-syntax-highlighting)
+    ```
+
+- zsh-autosuggestions
+
+  ```bash
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  ```
+  
+  - add the plugin to `~/.zshrc`
+  
+    ```bash
+        plugins=([plugins...] zsh-autosuggestions)
+    ```
+
+- zsh-completions
+
+  ```bash
+  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+  ```
+
+  - add the plugin to `~/.zshrc`
+  
+    ```bash
+        plugins=([plugins...] zsh-completions)
+    ```
+
+### change directory/folder color
+
+```bash
+git clone https://github.com/seebi/dircolors-solarized 
+echo '\neval `dircolors dircolors-solarized/dircolors.256dark`\n' >> ~/.zshrc 
+```
+
+## CopyQ
+
+```bash
+sudo add-apt-repository ppa:hluk/copyq
+sudo apt update
+sudo apt install copyq
+```
+
+open the preferences, configure shortcut for `show main window under mouse cursor`
