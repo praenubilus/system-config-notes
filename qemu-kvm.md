@@ -54,6 +54,37 @@ sudo apt install qemu qemu-kvm libvirt-clients libvirt-daemon-system bridge-util
   sudo virsh net-autostart default
   ```
 
+### Bridge Network
+
+1. use tool to configure and create bridge on host (for eathernet interface only):
+  
+   ```bash
+   sudo nmtui
+   ```
+  
+   - Deactivate current ehernet interface
+   ![deactivate](images/qemu-deactivate1.png)
+   ![deactivate](images/qemu-deactivate2.png)
+
+   - add/create bridge with default settings
+   ![bridge](images/bridge-create.png)
+   ![bridge](images/bridge-create2.png)
+
+   - delete ethernet interface
+    ![delete-ethernet](images/delete-eth.png)
+
+   - add ethernet interface to bridge as slave
+    ![add-eth-to-bridge](images/add-eth-2-bridge.png)
+    ![add-eth-to-bridge](images/add-eth-2-bridge2.png)
+
+   - save and quit nmtui
+    ![save-quit-nmtui](images/save-quit-nmtui.png)
+
+1. Add new bridge NIC to VM
+
+   ![add-bridge-nic](images/add-bridge-to-vm.png)
+
+
 ### Add networking printer
 
 By default, A virtual NAT NIC is attached when a VM is created. Network printer on host network is not visible. The solution is to add another bridge(using host physical NIC) to the VM. Then the printer will be visible. This can be done directly in the Virt-Manager.
