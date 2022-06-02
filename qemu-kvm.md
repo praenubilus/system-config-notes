@@ -6,33 +6,25 @@
 sudo apt install qemu qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager libguestfs-tools
 ```
 
-## Migration and Tranfer VMs
+## Configuration
 
-### export qemu VM
+### Dual monitors
 
-  ```bash
-    virsh dumpxml vm-name > /path/to/xm_file.xml
+- add one more QXL device to the hardware list. (Note: this is for Windows guest OS only). Update the `QXL` configuration (in creasing video memories). Following is a sample configuration. Memory unit here is in MB.
+
+  ```xml
+  <video>
+    <model type="qxl" ram="262144" vram="262144" vgamem="131072" heads="2" primary="yes"/>
+    <alias name="video0"/>
+    <address type="pci" domain="0x0000" bus="0x00" slot="0x01" function="0x0"/>
+  </video>
   ```
-
-### import libvirt VM XML file as new VM
-
-  ```bash
-   virsh define /path/to/xmlfile.xml
-  ```
-
-### migrate from VirtualBox Image to Qemu/kvm
-
-- convert to raw images
-
-    ```bash
-    VBoxManage clonehd --format RAW vbox.vdi target-raw.img
-    ```
-
-- convert to qemu images
-
-    ```bash
-    qemu-img convert -f raw target-raw.img -O qcow2 qemu.qcow2
-    ```
+  
+- launch the VM as normal.
+- using `virt-manager`, open the VM and change the `QXL` configuration.
+- in the drop down menu, turn `monitor2`
+- Things to notice
+  - Do not scale in guest OS, otherwise the mouse cursor will have weird alignment 
 
 ## Networking
 
@@ -135,8 +127,7 @@ Windows 11 guest requires extra steps. And to make it work, `Ubuntu 20.04+` is r
 
 ### Pre-Requirements
 
-There are several ways for file sharing. One is Samba (better performance, but more trivial to config). Another is 
-Spice Webdav Daemon. Here we focus on the spice solution.
+There are several ways for file sharing. One is Samba (better performance, but more trivial to config). Another is Spice Webdav Daemon. Here we focus on the spice solution.
 
 On **host**, virt-manager does not come with shared folder option. We need `virt-viewer`, `spice-client` which are already 
 installed in previous settings for qemu.
@@ -156,3 +147,31 @@ and [spice webdev daemon](https://www.spice-space.org/download/windows/spice-web
   - launch `virt-viewer`, it should be able to detect existing session, choose `connect`
   - in the menu of `virt-viewer`, from `File`->`Preferences`, check `Shared folder`, and **specify which folder on host** to share
   - The web drive should appear in Windows Guest **File Explorer**
+
+## Migration and Transfer VMs
+
+### export qemu VM
+
+  ```bash
+    virsh dumpxml vm-name > /path/to/xm_file.xml
+  ```
+
+### import libvirt VM XML file as new VM
+
+  ```bash
+   virsh define /path/to/xmlfile.xml
+  ```
+
+### migrate from VirtualBox Image to Qemu/kvm
+
+- convert to raw images
+
+    ```bash
+    VBoxManage clonehd --format RAW vbox.vdi target-raw.img
+    ```
+
+- convert to qemu images
+
+    ```bash
+    qemu-img convert -f raw target-raw.img -O qcow2 qemu.qcow2
+    ```
