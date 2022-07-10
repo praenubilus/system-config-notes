@@ -137,3 +137,12 @@ sudo apt install copyq
 ```
 
 open the preferences, configure shortcut for `show main window under mouse cursor`
+
+
+## disable system wide prompt "select to paste" from fcitx
+
+symptom: when enter `ctrl+;", a window will prompt "select to paste" which is from fcitx. To disable this prompt, disable the shortcut in fcitx add-on.
+
+![](images/fcitx-prompt-copy-to-paste.png)
+
+![](images/fcitx-addon.png)  
