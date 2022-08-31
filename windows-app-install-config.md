@@ -1,10 +1,25 @@
 # Apps Installation List for Windows Dev Environment
 
-## App management Software
+- [Apps Installation List for Windows Dev Environment](#apps-installation-list-for-windows-dev-environment)
+  - [Misc](#misc)
+    - [App management Software](#app-management-software)
+    - [Config X Server to display GUI from SSH session](#config-x-server-to-display-gui-from-ssh-session)
+    - [Windows cannot Run Script in Powershell](#windows-cannot-run-script-in-powershell)
+    - [Powershell display Grbled characters](#powershell-display-grbled-characters)
+    - [Set startup application in Windows](#set-startup-application-in-windows)
+    - [Install WSL](#install-wsl)
+  - [Add autocompletion in Powershell](#add-autocompletion-in-powershell)
+  - [Misc System and Productivity Apps](#misc-system-and-productivity-apps)
+  - [Git install and config](#git-install-and-config)
+    - [Make ssh agent run in background](#make-ssh-agent-run-in-background)
+
+## Misc
+
+### App management Software
 
 Chocolatey tool
 
-## Config X Server to display GUI from SSH session
+### Config X Server to display GUI from SSH session
 
 - Install X Server App(Xming)
 
@@ -24,7 +39,7 @@ Chocolatey tool
   ssh -v -Y <username>@<ipaddress> -p <port>
   ```
 
-## Windows cannot Run Script in Powershell
+### Windows cannot Run Script in Powershell
 
 ```ps1
 # check execution policy
@@ -35,11 +50,15 @@ Chocolatey tool
  Set-ExecutionPolicy RemoteSigned -Scope LocalMachine
 ```
 
-## Set startup application in Windows
+### Powershell display Grbled characters
+
+![enable utf8](images/enable-UTF-8-encoding.png)
+
+### Set startup application in Windows
 
 `Win+R`-> `shell:startup`-> right click then create a shortcut
 
-## Install WSL
+### Install WSL
 
 ```ps1
 wsl --install 
@@ -115,3 +134,21 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
   ```ps1
   choco install microsoft-teams
   ```
+
+## Git install and config
+
+After install `git-desktop`, configure git account.
+
+### Make ssh agent run in background
+
+```ps1
+# Make sure you're running as an Administrator
+Set-Service ssh-agent -StartupType Automatic
+Start-Service ssh-agent
+Get-Service ssh-agent
+# Generate ssh key
+ssh-keygen -t ed25519 -C "your_email@example.com"
+ssh-add ~/.ssh/id_ed25519
+```
+
+copy the content from  `~/.ssh/id_ed25519.pub` to github account.
